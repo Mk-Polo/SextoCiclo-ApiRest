@@ -3,10 +3,12 @@ package com.mkpolo.idat.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.mkpolo.idat.entity.Categoria;
 import com.mkpolo.idat.repository.CategoriaRepository;
 
+@Service
 public class CategoriaServiceImpl implements ICategoriaService {
 	
 	@Autowired
