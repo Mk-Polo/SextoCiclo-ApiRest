@@ -53,7 +53,6 @@ public class PersonaServiceImpl implements IPersonaService {
 	@Override
 	public void eliminar(Long id) {
 		personaRepo.deleteById(id);
-		
 	}
 
 }
