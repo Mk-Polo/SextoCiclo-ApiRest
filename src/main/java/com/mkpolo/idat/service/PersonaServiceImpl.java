@@ -32,23 +32,10 @@ public class PersonaServiceImpl implements IPersonaService {
 		
 	}
 
-	@Override
-	public Persona buscarPorDni(String dni) {
-		
-		return personaRepo.existsByDni(dni);
-	}
+	
 
-	@Override
-	public Persona buscarPorNombre(String nombres) {
-		
-		return personaRepo.existsByNombres(nombres);
-	}
-
-	@Override
-	public Persona buscarPorApellidos(String apellidos) {
-		
-		return personaRepo.existsByApellidos(apellidos);
-	}
+	
+	
 
 	@Override
 	public void eliminar(Long id) {
@@ -56,4 +43,48 @@ public class PersonaServiceImpl implements IPersonaService {
 		
 	}
 
+	@Override
+	public boolean existePorDni(String dni) {
+		
+		return personaRepo.existsByDni(dni);
+	}
+
+	@Override
+	public Persona buscarPorDni(String dni) {
+		
+		return personaRepo.findByDni(dni);
+	}
+
+	
+	
+	
+	@Override
+	public boolean existePorNombre(String nombres) {
+		
+		return personaRepo.existsByNombres(nombres);
+	}
+
+	@Override
+	public Persona buscarPorNombre(String nombres) {
+		
+		return personaRepo.findByNombres(nombres);
+	}
+	
+	
+	
+	
+
+	@Override
+	public boolean existePorApellidos(String apellidos) {
+		
+		return personaRepo.existsByApellidos(apellidos);
+	}
+
+	@Override
+	public Persona buscarPorApellidos(String apellidos) {
+	
+		return personaRepo.findByApellidos(apellidos);
+	}
+
+	
 }

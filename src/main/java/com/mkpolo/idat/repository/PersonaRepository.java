@@ -7,8 +7,14 @@ import com.mkpolo.idat.entity.Persona;
 @Repository
 public interface PersonaRepository extends CrudRepository<Persona, Long> {
 
-	Persona existsByDni(String dni);
-	Persona existsByNombres(String nombres);
-	Persona existsByApellidos(String apellidos);
+	boolean existsByDni(String dni);
+	boolean existsByNombres(String nombres);
+	boolean existsByApellidos(String apellidos);
+	
+	
+	
+	Persona findByDni(String dni);
+	Persona findByNombres(String nombres);
+	Persona findByApellidos(String apellidos);
 	
 }

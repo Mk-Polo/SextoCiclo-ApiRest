@@ -12,10 +12,13 @@ public interface IPersonaService {
 
 	public void guardar(Persona persona);
 	
+	public boolean existePorDni(String dni);
 	public Persona buscarPorDni(String dni);
 	
+	public boolean existePorNombre(String nombres);
 	public Persona buscarPorNombre(String nombres);
 	
+	public boolean existePorApellidos(String apellidos);
 	public Persona buscarPorApellidos(String apellidos);
 	
 	public void eliminar(Long id);

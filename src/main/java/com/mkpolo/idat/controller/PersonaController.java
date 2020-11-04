@@ -54,9 +54,19 @@ public class PersonaController {
 	  return new ResponseEntity("eliminado", HttpStatus.OK);
   }
   
+  @GetMapping(value = "/find/{id}")
+  public Persona find(@PathVariable Long id) {
+	  Persona persona = personaServ.buscarPorId(id);
+	  if(persona == null) {
+		  return new Persona();
+		  
+	  }return persona;
+  }
+  
+  
   @GetMapping(value = "/finddni/{dni}")
   public Persona finddni(@PathVariable String dni){
-	  Persona persona = personaServ.buscarPorDni(dni);
+	 Persona persona = personaServ.buscarPorDni(dni);
 	  if (persona == null) {
 		return new Persona();
 	}
