@@ -75,9 +75,14 @@ public class PersonaServiceImpl implements IPersonaService {
 	
 
 	@Override
+<<<<<<< HEAD
 	public boolean existePorApellidos(String apellidos) {
 		
 		return personaRepo.existsByApellidos(apellidos);
+=======
+	public void eliminar(Long id) {
+		personaRepo.deleteById(id);
+>>>>>>> master
 	}
 
 	@Override

@@ -32,9 +32,15 @@ public class PersonaController {
   }
 	
   @PostMapping(value = "/save")
-  public ResponseEntity<Persona> save(@RequestBody Persona persona){
+  public ResponseEntity<String> save(@RequestBody Persona persona){
+	  
+	  Persona existe = personaServ.buscarPorDni(persona.getDni());
+	  if(existe != null) {
+		  return new ResponseEntity("EXISTE",HttpStatus.OK);
+	  }else {
 	  personaServ.guardar(persona);
-	  return new ResponseEntity("creado",HttpStatus.OK);
+	  return new ResponseEntity("CREADO",HttpStatus.OK);
+	  }
   }
   
   @PutMapping(value = "/update")

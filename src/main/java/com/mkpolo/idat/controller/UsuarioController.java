@@ -2,8 +2,6 @@ package com.mkpolo.idat.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +31,9 @@ public class UsuarioController {
 	}
 	
 	@PostMapping(value = "/save")
-	public ResponseEntity<String> guardar(@RequestBody Usuario usuario){
+	public ResponseEntity<?> guardar(@RequestBody Usuario usuario){
 		usuarioService.guardar(usuario);
-		return new ResponseEntity<String>("CREADO", HttpStatus.OK);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/update")
