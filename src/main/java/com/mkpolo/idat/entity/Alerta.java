@@ -35,6 +35,7 @@ public class Alerta implements Serializable{
 	
 	private String estado;
 
+	
 	public Alerta() {
 		super();
 		// TODO Auto-generated constructor stub
