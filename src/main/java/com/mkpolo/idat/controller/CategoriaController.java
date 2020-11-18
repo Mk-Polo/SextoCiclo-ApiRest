@@ -34,25 +34,25 @@ public class CategoriaController {
 	@PostMapping(value="/save")
 	public ResponseEntity<String> guardar(@RequestBody Categoria categoria){
 		if(categoriaServ.existeCategoria(categoria.getCategoria())) {
-			return new ResponseEntity("Existe",HttpStatus.OK);
+			return new ResponseEntity("Registro existente, prueba con otro",HttpStatus.NOT_ACCEPTABLE);
 		}
 		categoriaServ.guardar(categoria);
-		return new ResponseEntity("Creado",HttpStatus.OK);
+		return new ResponseEntity("Registro guardado con éxito",HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/editar")
 	public ResponseEntity<String> editar(@RequestBody Categoria categoria){
 		categoriaServ.guardar(categoria);
-		return new ResponseEntity("Editado",HttpStatus.OK);
+		return new ResponseEntity("Registro actualizado con éxito",HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
 	public ResponseEntity<String> eliminar(@PathVariable Long id){
 		if(categoriaServ.existeId(id)) {
 			categoriaServ.eliminar(id);
-			return new ResponseEntity("ELIMINADO", HttpStatus.OK);
+			return new ResponseEntity("Registro eliminado con éxito", HttpStatus.OK);
 		}else {
-		return new ResponseEntity("ERROR", HttpStatus.NO_CONTENT);
+		return new ResponseEntity("Registro no encontrado", HttpStatus.NO_CONTENT);
 		}
 		}
 	

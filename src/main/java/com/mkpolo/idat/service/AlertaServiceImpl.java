@@ -39,4 +39,9 @@ public class AlertaServiceImpl implements IAlertaService {
 		alertaRepo.deleteById(id);
 	}
 
+	@Override
+	public boolean existePorId(Long id) {
+		return alertaRepo.existsById(id);
+	}
+
 }

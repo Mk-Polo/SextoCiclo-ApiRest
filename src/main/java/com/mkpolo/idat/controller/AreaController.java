@@ -34,25 +34,25 @@ public class AreaController {
 	@PostMapping(value="/save")
 	public ResponseEntity<String> guardar(@RequestBody Area area){
 		if(areaServ.existeArea(area.getArea())) {
-			return new ResponseEntity("Existe",HttpStatus.OK);
+			return new ResponseEntity("Registro existente, prueba con otro",HttpStatus.NOT_ACCEPTABLE);
 		}
 		areaServ.guardar(area);
-		return new ResponseEntity("Creado",HttpStatus.OK);
+		return new ResponseEntity("Registro guardado con éxito",HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/editar")
 	public ResponseEntity<String> editar(@RequestBody Area area){
 		areaServ.guardar(area);
-		return new ResponseEntity("Editado",HttpStatus.OK);
+		return new ResponseEntity("Registro actualizado con éxito",HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
 	public ResponseEntity<String> eliminar(@PathVariable Long id){
 		if(areaServ.existeId(id)) {
 			areaServ.eliminar(id);
-			return new ResponseEntity("ELIMINADO", HttpStatus.OK);
+			return new ResponseEntity("Registro eliminado con éxito", HttpStatus.OK);
 		}else {
-		return new ResponseEntity("ERROR", HttpStatus.NO_CONTENT);
+		return new ResponseEntity("Registro no encontrado", HttpStatus.NO_CONTENT);
 		}
 		}
 }

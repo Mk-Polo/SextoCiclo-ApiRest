@@ -31,36 +31,33 @@ public class ProductoController {
 	}
 	
 	@PostMapping(value="/save")
-	public ResponseEntity<Producto> save(@RequestBody Producto producto){
+	public ResponseEntity<String> save(@RequestBody Producto producto){
 		productoServ.guardar(producto);
-		return new ResponseEntity("CREADO", HttpStatus.OK);
+		return new ResponseEntity("Registro guardado con éxito", HttpStatus.CREATED);
 	}
 	
 	@PutMapping(value="/editar")
 	public ResponseEntity<String> editar(@RequestBody Producto producto){
 		productoServ.guardar(producto);
-		return new ResponseEntity("EDITADO", HttpStatus.OK);
+		return new ResponseEntity("Registro actualizado con éxito", HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
-	public ResponseEntity<String> delete(@PathVariable Long id){
-		Producto producto = productoServ.buscarPorId(id);
-		
-		if (producto != null) {
+	public ResponseEntity<String> delete(@PathVariable Long id){		
+		if(productoServ.existePorId(id)) {
 			productoServ.eliminar(id);
+			return new ResponseEntity("Registro eliminado con éxito", HttpStatus.OK);
 		}else {
-			return new ResponseEntity("ERROR",HttpStatus.NO_CONTENT);
-		}
-		
-		return new ResponseEntity("ELIMINADO", HttpStatus.OK);
+			return new ResponseEntity("Registro no encontrado",HttpStatus.NO_CONTENT);
+		}		
 	}
 	
 	@GetMapping(value="/existe/{barra}")
 	public ResponseEntity<String> existeBarra(@PathVariable Long barra) {
-		if(productoServ.existePorNombre(barra)) {
-			return new ResponseEntity("EXISTE", HttpStatus.OK);
+		if(productoServ.existePorBarra(barra)) {
+			return new ResponseEntity("Producto existente, prueba con otro", HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity("NUEVO", HttpStatus.OK);
+		return new ResponseEntity("Producto disponible", HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/buscar/{barra}")

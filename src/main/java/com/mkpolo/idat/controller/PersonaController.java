@@ -36,17 +36,17 @@ public class PersonaController {
 	  
 	  Persona existe = personaServ.buscarPorDni(persona.getDni());
 	  if(existe != null) {
-		  return new ResponseEntity("EXISTE",HttpStatus.OK);
+		  return new ResponseEntity("Registro existente, prueba con otro",HttpStatus.NOT_ACCEPTABLE);
 	  }else {
 	  personaServ.guardar(persona);
-	  return new ResponseEntity("CREADO",HttpStatus.OK);
+	  return new ResponseEntity("Registro guardado con éxito",HttpStatus.OK);
 	  }
   }
   
   @PutMapping(value = "/update")
   public ResponseEntity<Persona> update(@RequestBody Persona persona){
 	  personaServ.guardar(persona);
-	  return new ResponseEntity("actualizado", HttpStatus.OK);
+	  return new ResponseEntity("Registro actualizado con éxito", HttpStatus.OK);
   }
   
   @DeleteMapping(value = "delete/{id}")
@@ -55,9 +55,9 @@ public class PersonaController {
 	  if(persona != null) {
 		  personaServ.eliminar(id);
 	  }else {
-		return new ResponseEntity("error", HttpStatus.NO_CONTENT);
+		return new ResponseEntity("Registro no encontrado", HttpStatus.NO_CONTENT);
 	}
-	  return new ResponseEntity("eliminado", HttpStatus.OK);
+	  return new ResponseEntity("Registro eliminado con éxito", HttpStatus.OK);
   }
   
   @GetMapping(value = "/finddni/{dni}")

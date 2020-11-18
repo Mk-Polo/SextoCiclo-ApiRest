@@ -16,5 +16,7 @@ public interface IProductoService {
 	
 	public Producto buscarPorBarra(Long barra);
 	
-	public boolean existePorNombre(Long barra);
+	public boolean existePorBarra(Long barra);
+	
+	public boolean existePorId(Long id);
 }

@@ -34,25 +34,25 @@ public class MarcasController {
 	@PostMapping(value="/save")
 	public ResponseEntity<String> guardar(@RequestBody Marcas marca){
 		if(marcaService.existeMarca(marca.getMarca())) {
-			return new ResponseEntity("Existe",HttpStatus.OK);
+			return new ResponseEntity("Marca existente, prueba con otra",HttpStatus.NOT_ACCEPTABLE);
 		}
 		marcaService.guardar(marca);
-		return new ResponseEntity("Creado",HttpStatus.OK);
+		return new ResponseEntity("Registro guardado con éxito",HttpStatus.CREATED);
 	}
 	
 	@PutMapping(value="/editar")
 	public ResponseEntity<String> editar(@RequestBody Marcas marca){
 		marcaService.guardar(marca);
-		return new ResponseEntity("Editado",HttpStatus.OK);
+		return new ResponseEntity("Registro actualizado con éxito",HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
 	public ResponseEntity<String> eliminar(@PathVariable Long id){
 		if(marcaService.existeId(id)) {
 			marcaService.eliminar(id);
-			return new ResponseEntity("ELIMINADO", HttpStatus.OK);
+			return new ResponseEntity("Registro eliminado con éxito", HttpStatus.OK);
 		}else {
-		return new ResponseEntity("ERROR", HttpStatus.NO_CONTENT);
+		return new ResponseEntity("Registro no encontrado", HttpStatus.NO_CONTENT);
 		}
 		}
 }

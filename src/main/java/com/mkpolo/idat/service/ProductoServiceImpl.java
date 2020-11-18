@@ -40,8 +40,13 @@ public class ProductoServiceImpl implements IProductoService {
 	}
 
 	@Override
-	public boolean existePorNombre(Long barra) {
+	public boolean existePorBarra(Long barra) {
 		return productoRepo.existsByBarra(barra);
+	}
+
+	@Override
+	public boolean existePorId(Long id) {
+		return productoRepo.existsById(id);
 	}
 
 }

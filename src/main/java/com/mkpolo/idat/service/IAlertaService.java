@@ -16,4 +16,6 @@ public interface IAlertaService {
 	
 	public void eliminar(Long id);
 	
+	public boolean existePorId(Long id);
+	
 }
