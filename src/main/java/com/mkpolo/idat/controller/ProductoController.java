@@ -18,7 +18,7 @@ import com.mkpolo.idat.entity.Producto;
 import com.mkpolo.idat.service.IProductoService;
 
 @RestController
-@RequestMapping(value = "/api/producto/")
+@RequestMapping(value = "/api/productos/")
 @CrossOrigin("*")
 public class ProductoController {
 
@@ -53,7 +53,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping(value="/existe/{barra}")
-	public ResponseEntity<String> existeBarra(@PathVariable Long barra) {
+	public ResponseEntity<String> existeBarra(@PathVariable String barra) {
 		if(productoServ.existePorBarra(barra)) {
 			return new ResponseEntity("Producto existente, prueba con otro", HttpStatus.NO_CONTENT);
 		}
@@ -61,7 +61,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping(value="/buscar/{barra}")
-	public Producto buscarBarra(@PathVariable Long barra) {
+	public Producto buscarBarra(@PathVariable String barra) {
 		Producto product = productoServ.buscarPorBarra(barra);
 		if(product == null) {
 			return new Producto();

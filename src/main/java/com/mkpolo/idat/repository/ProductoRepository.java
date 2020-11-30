@@ -8,6 +8,6 @@ import com.mkpolo.idat.entity.Producto;
 @Repository
 public interface ProductoRepository extends CrudRepository<Producto, Long>{
 
-	Producto findByBarra(Long barra);
-	boolean existsByBarra(Long barra);
+	Producto findByBarra(String barra);
+	boolean existsByBarra(String barra);
 }

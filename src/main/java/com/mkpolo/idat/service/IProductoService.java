@@ -14,9 +14,9 @@ public interface IProductoService {
 	
 	public void eliminar(Long id);
 	
-	public Producto buscarPorBarra(Long barra);
+	public Producto buscarPorBarra(String barra);
 	
-	public boolean existePorBarra(Long barra);
+	public boolean existePorBarra(String barra);
 	
 	public boolean existePorId(Long id);
 }

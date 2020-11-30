@@ -33,7 +33,7 @@ public class Producto {
 	private String producto;
 	
 	@Column
-	private Long barra;
+	private String barra;
 	
 	@Column
 	private String peso;
@@ -49,7 +49,7 @@ public class Producto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(Long id, Area area, Categoria categoria, Marcas marca, String producto, Long barra, String peso,
+	public Producto(Long id, Area area, Categoria categoria, Marcas marca, String producto, String barra, String peso,
 			int dias, String imagen) {
 		super();
 		this.id = id;
@@ -103,11 +103,11 @@ public class Producto {
 		this.producto = producto;
 	}
 
-	public Long getBarra() {
+	public String getBarra() {
 		return barra;
 	}
 
-	public void setBarra(Long barra) {
+	public void setBarra(String barra) {
 		this.barra = barra;
 	}
 

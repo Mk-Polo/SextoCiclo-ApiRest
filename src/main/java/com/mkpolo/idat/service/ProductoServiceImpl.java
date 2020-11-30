@@ -35,18 +35,20 @@ public class ProductoServiceImpl implements IProductoService {
 	}
 
 	@Override
-	public Producto buscarPorBarra(Long barra) {
+	public boolean existePorId(Long id) {
+		return productoRepo.existsById(id);
+	}
+
+	@Override
+	public Producto buscarPorBarra(String barra) {
+		// TODO Auto-generated method stub
 		return productoRepo.findByBarra(barra);
 	}
 
 	@Override
-	public boolean existePorBarra(Long barra) {
-		return productoRepo.existsByBarra(barra);
-	}
-
-	@Override
-	public boolean existePorId(Long id) {
-		return productoRepo.existsById(id);
+	public boolean existePorBarra(String barra) {
+		// TODO Auto-generated method stub
+		 return productoRepo.existsByBarra(barra);
 	}
 
 }
